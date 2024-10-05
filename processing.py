@@ -10,5 +10,7 @@ df = df.fillna('Nah')
 
 engine = create_engine('postgresql+psycopg2://postgres:engelsa65@localhost:5432/postgres') 
 
+df.columns = df.columns.str.strip()
+
 df.to_sql('raw_data', engine, if_exists='replace', index=False) 
 print("Data loaded successfully into PostgreSQL.")
